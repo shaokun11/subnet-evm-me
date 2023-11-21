@@ -281,6 +281,7 @@ func (b *Block) verifyPredicates(predicateContext *precompileconfig.PredicateCon
 		if err != nil {
 			return err
 		}
+		println("---------block SetTxPredicateResults--------------")
 		predicateResults.SetTxPredicateResults(tx.Hash(), results)
 	}
 	// TODO: document required gas constraints to ensure marshalling predicate results does not error

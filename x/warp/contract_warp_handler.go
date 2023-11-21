@@ -52,8 +52,12 @@ func handleWarpMessage(accessibleState contract.AccessibleState, input []byte, r
 	}
 	state := accessibleState.GetStateDB()
 	predicateBytes, exists := state.GetPredicateStorageSlots(ContractAddress, warpIndex)
+	println("---handleWarpMessage----1----", exists, int(warpIndex))
 	predicateResults := accessibleState.GetBlockContext().GetPredicateResults(state.GetTxHash(), ContractAddress)
+	println("---handleWarpMessage----2----", state.GetTxHash().Hex(), ContractAddress.Hex())
+	fmt.Printf("---handleWarpMessage----3--+%v\n--", predicateResults)
 	valid := exists && set.BitsFromBytes(predicateResults).Contains(int(warpIndex))
+	println("---handleWarpMessage----4----", exists, set.BitsFromBytes(predicateResults).Contains(int(warpIndex)))
 	if !valid {
 		return handler.packFailed(), remainingGas, nil
 	}
