@@ -258,7 +258,6 @@ func (w *worker) commitTransaction(env *environment, tx *types.Transaction, coin
 			log.Debug("Transaction predicate failed verification in miner", "tx", tx.Hash(), "err", err)
 			return nil, err
 		}
-		println("---------worker SetTxPredicateResults--------------")
 		env.predicateResults.SetTxPredicateResults(tx.Hash(), results)
 
 		blockContext = core.NewEVMBlockContextWithPredicateResults(env.header, w.chain, &coinbase, env.predicateResults)

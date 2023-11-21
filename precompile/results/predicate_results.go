@@ -82,7 +82,6 @@ func (p *PredicateResults) GetPredicateResults(txHash common.Hash, address commo
 // SetTxPredicateResults sets the predicate results for the given [txHash]. Overrides results if present.
 func (p *PredicateResults) SetTxPredicateResults(txHash common.Hash, txResults TxPredicateResults) {
 	// If there are no tx results, omit them.
-	fmt.Println("--------SetTxPredicateResults----------", txHash.Hex(), len(txResults))
 	if len(txResults) == 0 {
 		return
 	}
